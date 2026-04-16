@@ -1,0 +1,19 @@
+name: AI Agent Workflow
+
+on:
+  push:
+    branches: [main]
+
+jobs:
+  ai-agent:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v4
+
+      - name: Run basic check
+        run: echo "Code pushed successfully 🚀"
+
+      - name: Run Python file
+        run: python app.py
