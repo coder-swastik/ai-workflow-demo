@@ -1,19 +1,21 @@
-name: AI Agent Workflow
+name: Debug Workflow
 
 on:
   push:
     branches: [main]
 
 jobs:
-  ai-agent:
+  debug:
     runs-on: ubuntu-latest
 
     steps:
-      - name: Checkout code
-        uses: actions/checkout@v4
+      - uses: actions/checkout@v4
 
-      - name: Run basic check
-        run: echo "Code pushed successfully 🚀"
+      - name: Show full directory
+        run: |
+          pwd
+          ls -R
 
-      - name: Run Python file
-        run: python app.py
+      - name: Check file existence
+        run: |
+          if [ -f app.py ]; then echo "app.py FOUND"; else echo "app.py NOT FOUND"; fi
